@@ -13,6 +13,18 @@ export default function Navbar() {
           <li>
             <Link href="/newproduct" className="text-sky-500 hover:text-sky-200">New Product</Link>
           </li>
+          <li>
+            <Link href="/clients" className="text-sky-500 hover:text-sky-200">Clients</Link>
+          </li>
+          <li>
+            <Link href="/newclient" className="text-sky-500 hover:text-sky-200">New Client</Link>
+          </li>
+          <li>
+            <Link href="/employees" className="text-sky-500 hover:text-sky-200">Employees</Link>
+          </li>
+          <li>
+            <Link href="/newemployee" className="text-sky-500 hover:text-sky-200">New Employee</Link>
+          </li>
         </ul>
       </div>
     </nav>

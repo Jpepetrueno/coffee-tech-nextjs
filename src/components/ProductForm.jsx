@@ -9,7 +9,7 @@ function ProductForm() {
     name: '',
     description: '',
     price: 0,
-    quantity: ''
+    quantity: 0
   })
   const form = useRef(null)
   const router = useRouter()
@@ -65,7 +65,7 @@ function ProductForm() {
         <input name="price" type="number" placeholder="6.00" onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={product.price} />
 
         <label htmlFor="quantity" className="block text-gray-700 text-sm font-bold mb-2">Quantity</label>
-        <input name="quantity" type="number" placeholder="200" onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={product.quantity} />
+        <input name="quantity" type="number" onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={product.quantity} />
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">{!params.id ? 'Create' : 'Update'}</button>
 
