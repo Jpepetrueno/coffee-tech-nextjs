@@ -20,7 +20,6 @@ function Buttons({ id }) {
         }
       }} >Delete</button>
 
-      <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={() => router.push('/products/sell/' + id)}>Sell</button>
     </div >
   )
 }

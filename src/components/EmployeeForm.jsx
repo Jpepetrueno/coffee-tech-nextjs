@@ -57,7 +57,7 @@ function EmployeeForm() {
         <input type="text" name="name" value={employee.name} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="David Small" autoFocus />
 
         <label htmlFor="role" className="block text-gray-700 text-sm font-bold mb-2">Role</label>
-        <input type="text" name="role" value={employee.role} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="UI Designer" />
+        <input type="text" name="role" value={employee.role} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="bartender" />
 
         <label htmlFor="startDate" className="block text-gray-700 text-sm font-bold mb-2">Start Date</label>
         <input type="date" name="startDate" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={employee.startDate} onChange={handleChange} />

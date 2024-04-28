@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="bgzinc-900 text-white py-3 mb-2">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/"><h3 className="text-2xl font-bold text-green-500 hover:text-green-300">Coffee Tech App</h3></Link>
+        <Link href="/"><h3 className="text-xl font-bold text-green-500 hover:text-green-300">☕ CoffeeTech</h3></Link>
 
         <ul className="flex gap-4">
           <li>
@@ -24,6 +24,9 @@ export default function Navbar() {
           </li>
           <li>
             <Link href="/newemployee" className="text-sky-500 hover:text-sky-200">New Employee</Link>
+          </li>
+          <li>
+            <Link href="/sales" className="text-sky-500 hover:text-sky-200">Sales</Link>
           </li>
           <li>
             <Link href="/newsale" className="text-sky-500 hover:text-sky-200">New Sale</Link>

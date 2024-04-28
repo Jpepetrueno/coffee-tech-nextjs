@@ -42,3 +42,32 @@ CREATE TABLE sale(
 
 -- Esta consulta selecciona los datos completos de los clientes de la tabla de ventas (sale)
 select c.* from sale s join client c on s.idClient = c.id;
+
+-- Esta consulta selecciona los datos completos de los productos de la tabla de ventas (sale)
+SELECT p.* FROM sale s JOIN product p ON s.idProduct = p.id;
+
+-- Esta consulta verifica la existencia de stock disponible de los productos de la tabla de ventas (sale)
+SELECT p.id, p.quantity AS stock_disponible, SUM(s.quantity) AS cantidad_vendida FROM product p JOIN sale s ON p.id = s.idProduct GROUP BY p.id HAVING stock_disponible >= cantidad_vendida;
+
+-- Trigger para actualizar el stock de los productos al insertar una nueva venta
+DELIMITER //
+CREATE TRIGGER update_product_stock AFTER INSERT ON sale
+FOR EACH ROW
+BEGIN
+    UPDATE product SET quantity = quantity - NEW.quantity WHERE id = NEW.idProduct;
+END;
+// DELIMITER ;
+
+-- Agregar columna de product_total_price a la tabla de ventas (sale)
+ALTER TABLE sale ADD COLUMN product_total_price DECIMAL(10, 2);
+
+-- Trigger para actualizar el total de precio de los productos de la tabla de ventas (sale)
+DELIMITER //
+CREATE TRIGGER update_product_total_price BEFORE INSERT ON sale
+FOR EACH ROW
+BEGIN
+    DECLARE product_total_price DECIMAL(10, 2);
+    SELECT price INTO product_total_price FROM product WHERE id = NEW.idProduct;
+    SET NEW.product_total_price = product_total_price * NEW.quantity;
+END;
+// DELIMITER ;
