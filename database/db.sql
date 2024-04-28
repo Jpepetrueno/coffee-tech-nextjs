@@ -33,7 +33,9 @@ CREATE TABLE sale(
     idEmployee INT UNSIGNED NOT NULL,
     idProduct INT UNSIGNED NOT NULL,
     quantity INT UNSIGNED NOT NULL,
+    discount INT UNSIGNED NOT NULL,
     paymentMethod VARCHAR(50) NOT NULL,
+    product_total_price DECIMAL(10, 2) NOT NULL,
     createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (idClient) REFERENCES client(id),
     FOREIGN KEY (idEmployee) REFERENCES employee(id),
@@ -68,6 +70,9 @@ FOR EACH ROW
 BEGIN
     DECLARE product_total_price DECIMAL(10, 2);
     SELECT price INTO product_total_price FROM product WHERE id = NEW.idProduct;
-    SET NEW.product_total_price = product_total_price * NEW.quantity;
+    SET NEW.product_total_price = product_total_price * NEW.quantity * (1 - (NEW.discount/ 100));
 END;
 // DELIMITER ;
+
+-- Agregar columna de descuento a la tabla de ventas (sale)
+ALTER TABLE sale ADD COLUMN descuento DECIMAL(10, 2);

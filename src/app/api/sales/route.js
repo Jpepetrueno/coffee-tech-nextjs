@@ -13,8 +13,8 @@ export async function GET() {
 
 export async function POST(request) {
   try {
-    const { idClient, idEmployee, idProduct, paymentMethod, quantity } = await request.json()
-    const result = await db.query('INSERT INTO sale SET ?', { idClient, idEmployee, idProduct, paymentMethod, quantity })
+    const { idClient, idEmployee, idProduct, paymentMethod, quantity, discount } = await request.json()
+    const result = await db.query('INSERT INTO sale SET ?', { idClient, idEmployee, idProduct, paymentMethod, quantity, discount })
 
     return NextResponse.json({
       idClient,
@@ -22,6 +22,7 @@ export async function POST(request) {
       idProduct,
       paymentMethod,
       quantity,
+      discount,
       id: result.insertId
     })
 

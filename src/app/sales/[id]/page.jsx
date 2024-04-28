@@ -18,6 +18,7 @@ export default async function SalePage({ params }) {
         <p><strong>ID Employee:</strong> {sale.idEmployee}</p>
         <p><strong>Payment Method:</strong> {sale.paymentMethod}</p>
         <p><strong>Quantity:</strong> {sale.quantity}</p>
+        <p><strong>Discount %:</strong> {sale.discount}</p>
         <p><strong>Total Price: $</strong> {sale.product_total_price}</p>
       </div>
     </section>

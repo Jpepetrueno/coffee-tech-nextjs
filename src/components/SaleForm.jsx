@@ -10,6 +10,7 @@ export default function SaleForm() {
     idEmployee: '',
     idProduct: '',
     quantity: 0,
+    discount: 0,
     paymentMethod: ''
   })
   const form = useRef(null)
@@ -31,6 +32,7 @@ export default function SaleForm() {
           idEmployee: response.data.idEmployee,
           idProduct: response.data.idProduct,
           quantity: response.data.quantity,
+          discount: response.data.discount,
           paymentMethod: response.data.paymentMethod
         })
       })
@@ -71,6 +73,10 @@ export default function SaleForm() {
 
         <label htmlFor="quantity" className="block text-gray-700 text-sm font-bold mb-2"> Quantity</label>
         <input type="number" name="quantity" value={sale.quantity} onChange={handleChange} placeholder="Quantity" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+
+
+        <label htmlFor="discount" className="block text-gray-700 text-sm font-bold mb-2">discount 0-100 %</label>
+        <input type="number" name="discount" value={sale.discount} onChange={handleChange} placeholder="Discount" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
 
 
         <label htmlFor="paymentMethod" className="block text-gray-700 text-sm font-bold mb-2"> Payment method</label>
