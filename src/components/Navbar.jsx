@@ -25,6 +25,9 @@ export default function Navbar() {
           <li>
             <Link href="/newemployee" className="text-sky-500 hover:text-sky-200">New Employee</Link>
           </li>
+          <li>
+            <Link href="/newsale" className="text-sky-500 hover:text-sky-200">New Sale</Link>
+          </li>
         </ul>
       </div>
     </nav>
