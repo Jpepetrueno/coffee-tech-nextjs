@@ -42,14 +42,6 @@ CREATE TABLE sale(
     FOREIGN KEY (idProduct) REFERENCES product(id)
 );
 
--- Esta consulta selecciona los datos completos de los clientes de la tabla de ventas (sale)
-select c.* from sale s join client c on s.idClient = c.id;
-
--- Esta consulta selecciona los datos completos de los productos de la tabla de ventas (sale)
-SELECT p.* FROM sale s JOIN product p ON s.idProduct = p.id;
-
--- Esta consulta verifica la existencia de stock disponible de los productos de la tabla de ventas (sale)
-SELECT p.id, p.quantity AS stock_disponible, SUM(s.quantity) AS cantidad_vendida FROM product p JOIN sale s ON p.id = s.idProduct GROUP BY p.id HAVING stock_disponible >= cantidad_vendida;
 
 -- Trigger para actualizar el stock de los productos al insertar una nueva venta
 DELIMITER //
@@ -60,8 +52,6 @@ BEGIN
 END;
 // DELIMITER ;
 
--- Agregar columna de product_total_price a la tabla de ventas (sale)
-ALTER TABLE sale ADD COLUMN product_total_price DECIMAL(10, 2);
 
 -- Trigger para actualizar el total de precio de los productos de la tabla de ventas (sale)
 DELIMITER //
@@ -73,6 +63,3 @@ BEGIN
     SET NEW.product_total_price = product_total_price * NEW.quantity * (1 - (NEW.discount/ 100));
 END;
 // DELIMITER ;
-
--- Agregar columna de descuento a la tabla de ventas (sale)
-ALTER TABLE sale ADD COLUMN descuento DECIMAL(10, 2);
